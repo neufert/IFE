@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ECMAScript</title>
+</head>
+<body>
+    <h1>开始感受JS的乐趣</h1>
+    <input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <br>
+    <h1>找到那个DOM</h1>
+    <div id="wrapper">
+        <div id="news-top" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>JS</span><a class="active" href="">Some Link2</a></li>
+                    <li><span>CSS</span><a href="">Some Link3</a></li>
+                    <li><span>JS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <div id="news-normal" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>HTML</span><a href="">Some Link2</a></li>
+                    <li><span>JS</span><a class="active" href="#">Some Link3</a></li>
+                    <li><span>CSS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+    </div>
+    <script>
+        // 加减乘除
+        document.getElementById("add-btn").onclick = function(){
+            document.getElementById("result").innerHTML = parseFloat(document.getElementById("first-number").value) + parseFloat(document.getElementById("second-number").value);
+        };
+        document.getElementById("minus-btn").onclick = function(){
+            document.getElementById("result").innerHTML = parseFloat(document.getElementById("first-number").value) - parseFloat(document.getElementById("second-number").value);
+        };
+        document.getElementById("times-btn").onclick = function(){
+            document.getElementById("result").innerHTML = parseFloat(document.getElementById("first-number").value) * parseFloat(document.getElementById("second-number").value);
+        };
+        document.getElementById("divide-btn").onclick = function(){
+            document.getElementById("result").innerHTML = parseFloat(document.getElementById("first-number").value) / parseFloat(document.getElementById("second-number").value);
+        };
+
+        // 找到那个DOM
+        function getAllListItem() {
+            // 返回页面中所有li标签
+            console.log(document.getElementsByTagName("li"));
+        }
+
+        function findAllHtmlSpanInOneSection(sectionId) {
+            // 返回某个section下所有span中内容为HTML的span标签
+            var spanList = document.getElementById(sectionId).getElementsByTagName("span");
+            for (var i = 0; i < spanList.length; i++){
+                if (spanList[i].innerHTML === "HTML"){
+                    console.log(spanList[i]);
+                }
+            }
+        }
+
+        function findListItem(sectionId, spanCont) {
+            // 返回某个section下，所有所包含span内容为spanCont的LI标签
+
+
+        }
+
+        function getActiveLinkContent(sectionId) {
+            // 返回某个section下，class为active的链接中包含的文字内容
+            var spanList = document.getElementById(sectionId).getElementsByTagName("a");
+            for (var i = 0; i < spanList.length; i++){
+                if (spanList[i].getAttribute("class") === "active"){
+                    console.log(spanList[i]);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

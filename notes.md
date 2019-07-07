@@ -1,3 +1,9 @@
+01 荒木的简历
+https://neufert.github.io/IFE/01_ResumeOfArakiHirohiko.html
+
+02 ECMAScript
+https://neufert.github.io/IFE/02_ECMAScript.html
+
 #第二天：给自己做一个在线简历吧
 
 
@@ -52,3 +58,16 @@ meta标签表示那些不能由其它HTML元相关元素 (base, link, script, st
 
 reference：
 https://zh.wikipedia.org/wiki/HTML
+
+#第三天：让简历有点色彩
+
+####什么是CSS，CSS是如何工作的
+
+
+####CSS的基本语法是怎样的
+
+
+####CSS选择器是什么概念，简单选择器和属性选择器是什么
+
+
+####文本样式都有哪些相关属性，对应哪些值

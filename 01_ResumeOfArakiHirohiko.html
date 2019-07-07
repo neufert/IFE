@@ -6,13 +6,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        button {
+            background-color: #ff0000;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+        }
+    </style>
 </head>
 <body>
     <h1>荒木飛呂彥</h1>
     <h1>Araki Hirohiko</h1>
-    <p>我在每天早上十點起床，星期日繪製分鏡稿，星期一至四完稿，星期五和六休息，不熬夜。以此作息持續了十年以上的時間。這種規律的作息是受到了同樣也是長期連載的漫畫家秋本治的影響。身體非常健康，我儘管已年過五十但面容不顯老態，甚至被其它漫畫家和粉絲戲稱「越活越年輕」、「長生不老」、「使用了波紋或石鬼面」。</p>
-<h2>作品列表</h2>
-<h2>JoJo的奇妙冒險《ジョジョの奇妙な冒険》</h2>
+    <p id="schedule"></p>
+    <button id="aboutMe">秘</button>
+    <h2>作品列表</h2>
+    <h2>JoJo的奇妙冒險《ジョジョの奇妙な冒険》</h2>
     <ul>
     <li>第1部：幻影血脈《Part1 ファントムブラッド》（1987年）</li>
     <li>第2部：戰鬥潮流《Part2 戦闘潮流》（1987年－1989年）</li>
@@ -27,5 +36,10 @@
     <li>【SHUEISHA JUMP REMIX版】：既刊64卷，2001年起發行。</li>
     </ul>
     <p>联系方式：http://www.araki-jojo.com/</p>
+    <script>
+        document.getElementById("aboutMe").onclick = function(){
+            document.getElementById("schedule").innerHTML = "我在每天早上十點起床，星期日繪製分鏡稿，星期一至四完稿，星期五和六休息，不熬夜。以此作息持續了十年以上的時間。這種規律的作息是受到了同樣也是長期連載的漫畫家秋本治的影響。身體非常健康，我儘管已年過五十但面容不顯老態，甚至被其它漫畫家和粉絲戲稱「越活越年輕」、「長生不老」、「使用了波紋或石鬼面」。"
+        }
+    </script>
 </body>
 </html>
