@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间练习</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <div id="currentTime">
+
+    </div>
+
+
+    <script>
+        /*
+在页面中显示当前日期及时间，按秒更新
+        格式为 YYYY 年 MM 月 DD 日 星期 D HH:mm:ss
+        注意位数的补齐，比如：
+-- 假设时间为2008年10月10日星期一的12点12分12秒，显示2008年10月10日星期一 12:12:12
+-- 假设时间为2008年1月1日星期一的3点2分2秒，显示2008年01月01日星期一 03:02:02
+        编码过程中，我们希望你注意对函数的封装，尽量让一个函数就做一个事情，而不要把所有的功能、代码揉在一起：
+封装一个函数，来根据某个日期返回这一天是星期几
+封装一个函数，把月、日、小时等出现个位数的情况前面补充0，补充为两位，比如1变为01
+封装一个函数，把最后的日期时间，按照要求的格式进行包装
+可能不止上面这些，尽可能地进行功能的解耦和拆解*/
+
+        //在页面中显示当前日期及时间，按秒更新
+        /*var today = new Date();
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1;
+        var date = today.getDate();
+        var hour = today.getHours();
+        var minute = today.getMinutes();
+        var second = today.getSeconds();
+        function checkTime(i){
+            if (i < 10){
+                i = "0" + i;
+                return i;
+            }
+        }
+        var a = setInterval(function(){
+            year = checkTime(year);
+            month = checkTime(month);
+            date = checkTime(date);
+            hour = checkTime(hour);
+            minute = checkTime(minute);
+            second = checkTime(second);
+            document.getElementById("currentTime").innerHTML = year + "年" + month + "月" + date + "日" + hour + ":" + minute + ":"+ second;
+        },1000);*/
+        //格式为 YYYY 年 MM 月 DD 日 星期 D HH:mm:ss
+        function test(){
+            var today = new Date();
+            var year = today.getFullYear();
+            var month = today.getMonth() + 1;
+            var date = today.getDate();
+            var day = today.getDay();
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+            month = checkTime(month);
+            date = checkTime(date);
+            hour = checkTime(hour);
+            minute = checkTime(minute);
+            second = checkTime(second);
+            day = showDay(day);
+            var showTime = year + "年" + month + "月" + date + "日" + "星期" + day + hour + ":" + minute + ":" + second;
+            document.getElementById("currentTime").innerText = showTime;
+        }
+
+        function checkTime(i){
+            if (i < 10){
+                i = "0" + i;
+                return i;
+            }
+            else return i;
+        }
+
+        function showDay(i){
+            var week = new Array("一", "二", "三", "四", "五", "六", "日");
+            i = week[i - 1];
+            return i;
+        }
+
+        var getTime = setInterval(test, 1000);
+    </script>
+</body>
+</html>

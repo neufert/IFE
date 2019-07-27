@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        label {
+            color: #a52a2a;
+            padding: 0 .5rem;
+        }
+        input {
+            padding: 0 .5rem;
+            box-sizing: border-box;
+            width: 300px;
+            border: .5px solid #d3d3d3;
+            height: 1.5rem;
+            outline: none;
+            color: #d2691e;
+        }
+        #mailOpts {
+            display: none;
+            border: .5px solid #d3d3d3;
+            width: 300px;
+        }
+        .options {
+            box-sizing: border-box;
+            padding: 0 .5rem;
+            width: 300px;
+            height: 1.5rem;
+            color: #d2691e;
+        }
+        p {
+            margin: 0;
+        }
+        .options:hover {
+            background-color: #d3d3d3;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="mail">EMAIL</label>
+        <div>
+            <input id="mail" type="text">
+        </div>
+        <div id="mailOpts">
+            <div>
+                <p class="options">163.com</p>
+            </div>
+            <div>
+                <p class="options">gmail.com</p>
+            </div>
+            <div>
+                <p class="options">126.com</p>
+            </div>
+            <div>
+                <p class="options">qq.com</p>
+            </div>
+            <div>
+                <p class="options">263.net</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var mailInput;
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var userInput = document.getElementById("mail");
+        userInput.addEventListener("keyup", getInput);
+        function getInput(){
+            if (event.key === "ArrowUp"){
+                arrowUp();
+            }
+            else{
+                mailInput = userInput.value.split(" ").join("");
+                userInput.value = mailInput;
+                postFix();
+                showOpts();
+            }
+        }
+        function postFix(){
+            var trim, index;
+            if (userInput.value.indexOf("@") === -1){
+                trim = userInput.value;
+            }
+            else if (userInput.value.indexOf("@") !== -1){
+                index = userInput.value.indexOf("@");
+                trim = userInput.value.substring(0, index);
+            }
+            for (var i=0; i < 5; i++){
+                document.getElementsByClassName("options")[i].innerText = trim + "@" + postfixList[i];
+            }
+        }
+        function showOpts(){
+            if (mailInput !== ""){
+                document.getElementById("mailOpts").style.display = "block";
+            }
+            if (mailInput === ""){
+                document.getElementById("mailOpts").style.display = "none";
+            }
+        }
+        function arrowUp(){
+            document.getElementsByClassName("options")[4].style.backgroundColor = "#d3d3d3";
+        }
+        document.getElementById("mailOpts").addEventListener("click", selectOpts);
+        function selectOpts(){
+            var t = event.target;
+            userInput.value = t.innerText;
+            document.getElementById("mailOpts").style.display = "none";
+        }
+    </script>
+</body>
+</html>
