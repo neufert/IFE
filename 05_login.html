@@ -71,9 +71,12 @@
         var userInput = document.getElementById("mail");
         userInput.addEventListener("keyup", getInput);
         function getInput(){
+            //上下键
             if (event.key === "ArrowUp"){
+                window.alert("upup");
                 arrowUp();
             }
+            //其他
             else{
                 mailInput = userInput.value.split(" ").join("");
                 userInput.value = mailInput;
@@ -81,19 +84,22 @@
                 showOpts();
             }
         }
+        //用户输入中包含@的话，只留下@前面的字
         function postFix(){
             var trim, index;
             if (userInput.value.indexOf("@") === -1){
+                //-1 == 不存在
                 trim = userInput.value;
             }
             else if (userInput.value.indexOf("@") !== -1){
                 index = userInput.value.indexOf("@");
                 trim = userInput.value.substring(0, index);
             }
-            for (var i=0; i < 5; i++){
+            for (var i=0; i < document.getElementsByClassName("options").length; i++){
                 document.getElementsByClassName("options")[i].innerText = trim + "@" + postfixList[i];
             }
         }
+        //隐藏显示提示栏
         function showOpts(){
             if (mailInput !== ""){
                 document.getElementById("mailOpts").style.display = "block";
@@ -102,9 +108,14 @@
                 document.getElementById("mailOpts").style.display = "none";
             }
         }
-        function arrowUp(){
-            document.getElementsByClassName("options")[4].style.backgroundColor = "#d3d3d3";
-        }
+        //上下键选择，不会做
+        /*function arrowUp(){
+            for (var i = 0; i < document.getElementsByClassName("options").length; i++){
+                if (document.getElementsByClassName("options")[i].style.backgroundColor === ""){
+                    document.getElementsByClassName("options")[4].style.backgroundColor = "#d3d3d3";
+                }
+            }
+        }*/
         document.getElementById("mailOpts").addEventListener("click", selectOpts);
         function selectOpts(){
             var t = event.target;

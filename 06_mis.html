@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MIS</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <div>
+        <div id = "selection">
+            <input type="checkbox" name="region" id="hd"><label for="hd">华东</label>
+            <input type="checkbox" name="region" id="hn"><label for="hn">华南</label>
+            <input type="checkbox" name="region" id="hb"><label for="hb">华北</label>
+        </div>
+
+        <table>
+            <tr>
+                <td>产品</td><td>区域</td><td>销量</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let sourceData = [{
+            product: "手机",
+            region: "华东",
+            sale: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]
+        }, {
+            product: "手机",
+            region: "华北",
+            sale: [80, 70, 90, 110, 130, 145, 150, 160, 170, 185, 190, 200]
+        }, {
+            product: "手机",
+            region: "华南",
+            sale: [220, 200, 240, 250, 260, 270, 280, 295, 310, 335, 355, 380]
+        }, {
+            product: "笔记本",
+            region: "华东",
+            sale: [50, 60, 80, 110, 30, 20, 70, 30, 420, 30, 20, 20]
+        }, {
+            product: "笔记本",
+            region: "华北",
+            sale: [30, 35, 50, 70, 20, 15, 30, 50, 710, 130, 20, 20]
+        }, {
+            product: "笔记本",
+            region: "华南",
+            sale: [80, 120, 130, 140, 70, 75, 120, 90, 550, 120, 110, 100]
+        }, {
+            product: "智能音箱",
+            region: "华东",
+            sale: [10, 30, 4, 5, 6, 5, 4, 5, 6, 5, 5, 25]
+        }, {
+            product: "智能音箱",
+            region: "华北",
+            sale: [15, 50, 15, 15, 12, 11, 11, 12, 12, 14, 12, 40]
+        }, {
+            product: "智能音箱",
+            region: "华南",
+            sale: [10, 40, 10, 6, 5, 6, 8, 6, 6, 6, 7, 26]
+        }];
+        var huabei = [];
+        var huanan = [];
+        var huadong = [];
+        var huabeiData = [];
+        var huananData = [];
+        var huadongData = [];
+        function getRegion(){
+            for (var i = 0; i < sourceData.length; i++){
+                if (sourceData[i].region === "华北"){
+                    huabei.push(i);
+                }
+                if (sourceData[i].region === "华南"){
+                    huanan.push(i);
+                }
+                if (sourceData[i].region === "华东"){
+                    huadong.push(i);
+                }
+            }
+            for (var j = 0; j < huabei.length; j++){
+                huabeiData.push(sourceData[huabei[j]]);
+            }
+            for (var k = 0; k < huabei.length; k++){
+                huananData.push(sourceData[huanan[k]]);
+            }
+            for (var h = 0; h < huabei.length; h++){
+                huadongData.push(sourceData[huadong[h]]);
+            }
+        }
+        getRegion();
+        console.log(huanan, huabei, huadong, huananData, huabeiData, huadongData);
+        function createTable(regionData){
+            document.getElementsByTagName("table")[0].innerHTML = "";
+            var tr_0 = document.createElement("tr");
+            var td_01 = document.createElement("td");
+            var td_02 = document.createElement("td");
+            var td_03 = document.createElement("td");
+            var text_01 = document.createTextNode("产品");
+            var text_02 = document.createTextNode("区域");
+            var text_03 = document.createTextNode("销量");
+            document.getElementsByTagName("table")[0].appendChild(tr_0);
+            tr_0.appendChild(td_01);
+            tr_0.appendChild(td_02);
+            tr_0.appendChild(td_03);
+            td_01.appendChild(text_01);
+            td_02.appendChild(text_02);
+            td_03.appendChild(text_03);
+            for (var i = 0; i < 3; i++){
+                var tr = document.createElement("tr");
+                var td_1 = document.createElement("td");
+                var td_2 = document.createElement("td");
+                var td_3 = document.createElement("td");
+                var text_1 = document.createTextNode(regionData[i].product);
+                var text_2 = document.createTextNode(regionData[i].region);
+                var text_3 = document.createTextNode(regionData[i].sale);
+                document.getElementsByTagName("table")[0].appendChild(tr);
+                tr.appendChild(td_1);
+                tr.appendChild(td_2);
+                tr.appendChild(td_3);
+                td_1.appendChild(text_1);
+                td_2.appendChild(text_2);
+                td_3.appendChild(text_3);
+            }
+        }
+        function selectRegion(){
+            console.log("1");
+            if (document.getElementById("hd").checked){
+                createTable(huadongData);
+            }
+            if (document.getElementById("hn").checked){
+                createTable(huananData);
+            }
+            if (document.getElementById("hb").checked){
+                createTable(huabeiData);
+            }
+        }
+        document.getElementById("selection").addEventListener("change",selectRegion);
+    </script>
+</body>
+</html>
